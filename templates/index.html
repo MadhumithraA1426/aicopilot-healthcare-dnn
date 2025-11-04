@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Copilot - Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Make a Prediction</h2>
+    <form method="POST" action="{{ url_for('home') }}">
+        Heart Rate: <input type="number" name="heart_rate" required><br>
+        Blood Pressure: <input type="number" name="blood_pressure" required><br>
+        Glucose Level: <input type="number" name="glucose_level" required><br>
+        Oxygen Saturation: <input type="number" name="oxygen_saturation" required><br>
+        Alert Triggered (1=yes,0=no): <input type="number" name="alert_triggered" required min="0" max="1"><br>
+        Caregiver Notified (1=yes,0=no): <input type="number" name="caregiver_notified" required min="0" max="1"><br>
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+    
+    <p><a href="{{ url_for('dashboard') }}">View Prediction History</a> | <a href="{{ url_for('logout') }}">Logout</a></p>
+</body>
+</html>
