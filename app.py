@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from models import db, User, PredictionLog
 from forms import LoginForm, RegistrationForm
-
+import os
 app = Flask(__name__)
 app.config['SECRET_KEY'] =os.environ.get('SECRET_KEY', 'change_this_to_a_random_key_in_prod')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///aicopilot.db'
@@ -100,4 +100,5 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
